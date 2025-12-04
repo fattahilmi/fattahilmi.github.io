@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fattah Al Ilmi Suhendra | Portfolio</title>
+    <title>Your Name | Portfolio</title>
     <style>
-        /* --- CSS VARIABLES & RESET --- */
+        /* --- CSS VARIABLES (DARK THEME) --- */
         :root {
-            --primary-color: #2563eb; /* Blue accent */
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-secondary: #64748b;
-            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --bg-color: #0f172a;       /* Very dark slate */
+            --bg-secondary: #1e293b;   /* Slightly lighter slate for cards */
+            --text-main: #f1f5f9;      /* Off-white for readability */
+            --text-secondary: #94a3b8; /* Muted blue-grey */
+            --accent-color: #38bdf8;   /* Cyan/Light Blue for pop */
+            --accent-hover: #0ea5e9;
+            --border-color: #334155;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: var(--font-main);
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text-main);
             background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 20%);
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
@@ -29,90 +32,132 @@
 
         /* --- LAYOUT UTILITIES --- */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        section { padding: 60px 0; border-bottom: 1px solid #e2e8f0; }
+        section { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
         section:last-child { border-bottom: none; }
 
-        h1, h2, h3 { color: var(--text-main); margin-bottom: 1rem; }
-        h2 { font-size: 2rem; border-left: 5px solid var(--primary-color); padding-left: 15px; }
+        h1, h2, h3 { color: var(--text-main); margin-bottom: 1rem; letter-spacing: -0.02em; }
+        h1 { font-size: 3.5rem; line-height: 1.1; font-weight: 800; }
+        h2 { font-size: 2rem; margin-bottom: 2rem; }
+        h3 { font-size: 1.25rem; font-weight: 600; }
 
         /* --- HEADER & NAV --- */
         header {
-            background: var(--card-bg);
+            background: rgba(15, 23, 42, 0.9); /* Glassmorphism effect */
+            backdrop-filter: blur(10px);
             padding: 20px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
         }
         
         nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: bold; font-size: 1.2rem; }
-        .nav-links a { margin-left: 20px; color: var(--text-secondary); font-weight: 500; }
-        .nav-links a:hover { color: var(--primary-color); }
+        .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px; }
+        .nav-links a { margin-left: 24px; color: var(--text-secondary); font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--accent-color); }
 
         /* --- HERO SECTION --- */
-        .hero { text-align: center; padding: 100px 0; }
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
-        .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px; }
+        .hero { text-align: left; padding: 120px 0; display: flex; align-items: center; min-height: 80vh; }
+        .hero-content { max-width: 700px; }
+        .hero h1 span { 
+            background: linear-gradient(to right, var(--accent-color), #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p { font-size: 1.25rem; color: var(--text-secondary); margin: 20px 0 35px; max-width: 550px; }
+        
         .btn {
             display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
+            background: var(--accent-color);
+            color: #0f172a; /* Dark text on light button */
+            padding: 12px 24px;
+            border-radius: 6px;
             font-weight: 600;
+            font-size: 1rem;
         }
-        .btn:hover { opacity: 0.9; }
+        .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            margin-left: 10px;
+        }
+        .btn-outline:hover { border-color: var(--accent-color); color: var(--accent-color); }
 
         /* --- CV / EXPERIENCE --- */
         .job-item {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+            border-left: 2px solid var(--border-color);
         }
-        .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
-        .job-role { font-weight: bold; font-size: 1.1rem; }
-        .job-date { color: var(--text-secondary); font-size: 0.9rem; }
-        .job-company { color: var(--primary-color); font-weight: 600; }
+        .job-item:last-child { margin-bottom: 0; }
+        .job-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-color);
+        }
+        .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+        .job-role { font-weight: 700; font-size: 1.2rem; color: var(--text-main); }
+        .job-date { color: var(--text-secondary); font-size: 0.9rem; font-family: monospace; }
+        .job-company { color: var(--accent-color); font-weight: 500; margin-bottom: 10px; display: block; }
+        .job-item p { color: var(--text-secondary); }
 
         /* --- PORTFOLIO GRID --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
         }
         .project-card {
-            background: var(--card-bg);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
+            padding: 24px;
+            transition: 0.2s ease-in-out;
         }
-        .project-card:hover { transform: translateY(-5px); }
-        .card-content { padding: 20px; }
+        .project-card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+        .project-card h3 { margin-bottom: 10px; }
+        .project-card p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; }
+        
+        .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
         .project-tags span {
-            background: #e2e8f0;
-            font-size: 0.8rem;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-right: 5px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 500;
         }
-        .card-links { margin-top: 15px; font-size: 0.9rem; color: var(--primary-color); }
+        .card-links a { color: var(--text-main); font-size: 0.9rem; font-weight: 500; }
+        .card-links a:hover { color: var(--accent-color); }
 
         /* --- FOOTER --- */
-        footer { text-align: center; padding: 40px 0; color: var(--text-secondary); font-size: 0.9rem; }
+        footer { text-align: center; padding: 60px 0; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid var(--border-color); }
+        .social-links { margin-bottom: 20px; }
+        .social-links a { margin: 0 10px; font-size: 1rem; opacity: 0.7; }
+        .social-links a:hover { opacity: 1; color: var(--accent-color); }
 
-        /* --- MOBILE --- */
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2rem; }
-            .nav-links { display: none; } /* Simplify for mobile or add burger menu later */
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .hero { text-align: center; padding-top: 60px; justify-content: center; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-content { margin: 0 auto; }
+            .nav-links { display: none; }
             .job-header { flex-direction: column; }
         }
     </style>
@@ -122,7 +167,7 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Fattah Al Ilmi Suhendra</div>
+                <div class="logo">Your Name</div>
                 <div class="nav-links">
                     <a href="#about">About</a>
                     <a href="#cv">Experience</a>
@@ -135,98 +180,99 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Hi, I'm Fattah Al Ilmi Suhendra.</h1>
-            <p>A passionate Developer / Designer / Data Analyst building things for the web and solving complex problems.</p>
-            <a href="#portfolio" class="btn">View My Work</a>
+            <div class="hero-content">
+                <h1>Building digital <br><span>products & experiences</span></h1>
+                <p>I am a Developer and Designer focused on creating accessible, pixel-perfect user interfaces.</p>
+                <div>
+                    <a href="#portfolio" class="btn">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="about">
         <div class="container">
             <h2>About Me</h2>
-            <p>Write a short paragraph here about your background. Mention your core skills, what you are currently learning, and what drives you professionally. Keep it engaging!</p>
-            <br>
-            <p><strong>Core Skills:</strong> JavaScript, Python, SQL, Project Management, Business Analysis</p>
+            <p style="color: var(--text-secondary); max-width: 700px;">
+                I'm a software engineer based in [Location], specializing in building (and occasionally designing) exceptional digital experiences. Currently, I'm focused on building accessible, human-centered products at <strong>Tech Corp</strong>.
+            </p>
         </div>
     </section>
 
     <section id="cv">
         <div class="container">
-            <h2>Experience</h2>
+            <h2>Where I've Worked</h2>
             
             <div class="job-item">
                 <div class="job-header">
-                    <span class="job-role">Senior Developer</span>
-                    <span class="job-date">2021 - Present</span>
+                    <span class="job-role">Senior Software Engineer</span>
+                    <span class="job-date">2022 - Present</span>
                 </div>
-                <div class="job-company">Tech Company Inc.</div>
-                <p>Describe your responsibilities and achievements here. Use bullet points if necessary.</p>
+                <span class="job-company">Google</span>
+                <p>Leading the frontend team for the cloud platform dashboard. Improved performance by 30%.</p>
             </div>
 
             <div class="job-item">
                 <div class="job-header">
-                    <span class="job-role">Junior Analyst</span>
-                    <span class="job-date">2019 - 2021</span>
+                    <span class="job-role">Web Developer</span>
+                    <span class="job-date">2019 - 2022</span>
                 </div>
-                <div class="job-company">Data Corp</div>
-                <p>Analyzed data trends, generated reports, and optimized workflow processes.</p>
+                <span class="job-company">Creative Agency</span>
+                <p>Developed responsive websites for over 20+ clients using React and modern CSS.</p>
             </div>
-            
-            <h3>Education</h3>
-             <div class="job-item">
+
+            <div class="job-item">
                 <div class="job-header">
-                    <span class="job-role">BS in Computer Science</span>
-                    <span class="job-date">2015 - 2019</span>
+                    <span class="job-role">Intern</span>
+                    <span class="job-date">2018 - 2019</span>
                 </div>
-                <div class="job-company">University Name</div>
+                <span class="job-company">StartUp Inc.</span>
+                <p>Assisted in the development of the main landing page and internal tools.</p>
             </div>
         </div>
     </section>
 
     <section id="portfolio">
         <div class="container">
-            <h2>Portfolio</h2>
+            <h2>Featured Projects</h2>
             <div class="grid">
                 
                 <div class="project-card">
-                    <div class="card-content">
-                        <h3>Project Name One</h3>
-                        <p>A brief description of the project. What problem did it solve? What tech did you use?</p>
-                        <div class="project-tags">
-                            <span>Python</span>
-                            <span>Django</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="#">View Code &rarr;</a>
-                        </div>
+                    <h3>E-Commerce Dashboard</h3>
+                    <p>A comprehensive dashboard for managing inventory and tracking sales in real-time.</p>
+                    <div class="project-tags">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="#" target="_blank">GitHub &nearr;</a>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="card-content">
-                        <h3>Project Name Two</h3>
-                        <p>Description of the second project. Keep it concise and focus on impact.</p>
-                        <div class="project-tags">
-                            <span>JavaScript</span>
-                            <span>HTML/CSS</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="#">View Demo &rarr;</a>
-                        </div>
+                    <h3>Weather App</h3>
+                    <p>A minimal dark-mode weather application using the OpenWeatherMap API.</p>
+                    <div class="project-tags">
+                        <span>Vue.js</span>
+                        <span>API</span>
+                        <span>CSS Grid</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="#" target="_blank">Live Demo &nearr;</a>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="card-content">
-                        <h3>Project Name Three</h3>
-                        <p>Description of the third project.</p>
-                        <div class="project-tags">
-                            <span>Design</span>
-                            <span>Figma</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="#">View Design &rarr;</a>
-                        </div>
+                    <h3>Portfolio v1</h3>
+                    <p>My previous portfolio site built with pure HTML and SCSS.</p>
+                    <div class="project-tags">
+                        <span>HTML5</span>
+                        <span>Sass</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="#" target="_blank">GitHub &nearr;</a>
                     </div>
                 </div>
 
@@ -234,23 +280,25 @@
         </div>
     </section>
 
-    <section id="contact">
-        <div class="container">
+    <section id="contact" style="border-bottom: none;">
+        <div class="container" style="text-align: center;">
             <h2>Get In Touch</h2>
-            <p>I'm currently open to new opportunities. Feel free to reach out!</p>
-            <br>
-            <a href="mailto:your.email@example.com" class="btn">Email Me</a>
-            <br><br>
-            <ul>
-                <li style="display:inline; margin: 0 10px;"><a href="#">GitHub</a></li>
-                <li style="display:inline; margin: 0 10px;"><a href="#">LinkedIn</a></li>
-                <li style="display:inline; margin: 0 10px;"><a href="#">Twitter/X</a></li>
-            </ul>
+            <p style="color: var(--text-secondary); margin-bottom: 30px;">
+                Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+            <a href="mailto:hello@example.com" class="btn">Say Hello</a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Your Name. Hosted on GitHub Pages.</p>
+        <div class="container">
+            <div class="social-links">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+            </div>
+            <p>Designed & Built by Your Name</p>
+        </div>
     </footer>
 
 </body>
